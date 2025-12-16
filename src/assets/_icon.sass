@@ -1,0 +1,50 @@
+@use 'utils'
+@use 'color'
+
+$code-language-icons: (
+    'javascript': (
+ext: 'js',
+icon: '',
+color: color.get-color(52),
+    ),
+    'typescript': (
+ext: 'ts',
+icon: '',
+color: color.get-color(204),
+    ),
+    'python': (
+ext: 'py',
+icon: '',
+color: color.get-color(47),
+    ),
+	'markdown': (
+ext: 'md',
+icon: '',
+color: color.get-color-1-r(),
+	),
+	'ini': (
+ext: 'ini',
+icon: '',
+color: color.get-color-1-r(),
+	),
+	'console': (
+ext: '',
+icon: '󰆍',
+color: color.get-color-1-r(),
+	),
+	'ansi': (
+ext: '',
+icon: '󰆍',
+color: color.get-color-1-r(),
+	),
+	'log': (
+ext: '',
+icon: '󱂅',
+color: color.get-color-1-r(),
+	),
+	'shell': (
+ext: 'sh',
+icon: '',
+color: hsl(123, 40%,var(--main-color-l-r)),
+	)
+)

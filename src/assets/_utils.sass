@@ -1,0 +1,27 @@
+@use 'sass:string'
+
+/// Replace `$search` with `$replace` in `$string`
+/// @author Hugo Giraudel
+/// @param {String} $string - Initial string
+/// @param {String} $search - Substring to replace
+/// @param {String} $replace ('') - New value
+/// @return {String} - Updated string
+@function str-replace($string, $search, $replace: '')
+	$index: string.index($string, $search)
+
+	@if $index
+		@return string.slice($string, 1, $index - 1) + $replace + str-replace(string.slice($string, $index + string.length($search)), $search, $replace)
+
+	@return $string
+
+// helper: 将常见需要转义的字符替换为百分号编码（Dart Sass）
+@function svg-escape($svg)
+	$s: $svg
+	// $s: str-replace($s, '\n', '')
+	$s: str-replace($s, '#', '%23')
+	// $s: str-replace($s, '"', '%22')
+	// $s: str-replace($s, '%', '%25')
+	// $s: str-replace($s, '<', '%3C')
+	// $s: str-replace($s, '>', '%3E')
+	// $s: str-replace($s, ' ', '%20')
+	@return $s

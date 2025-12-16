@@ -1,0 +1,162 @@
+@use "color"
+
+body
+	font-family: "JetBrainsMonoNL NF", monospace
+	background-color: color.get-bg-color()
+	color: var(--font-color)
+	transition: background-color 0.3s, color 0.3s
+	--bg-main-1: #{color.get-bg-color-1()}
+	--bg-main-2: #{color.get-bg-color-2()}
+	--color-1: 235
+	--color-2: 215
+	--color-3: 195
+	--color-1-r: 20
+	--color-2-r: 40
+	--color-3-r: 60
+	--font-color: hsl(0, 0%, 10%)
+	--font-color-r: hsl(0, 0%, 90%)
+	--bg-color-l: 80%
+	--main-color-l: 65%
+	--main-color-l-r: 35%
+	--main-color-l-bg: 90%
+
+	--main-color: 200
+	--bg-color-home: 260
+	--bg-color-article: 215
+	--bg-color-edu: 160
+	--bg-color-links: 60
+	--bg-color-about: 200
+	--bg-color-unknown: 0
+	--bg-color-1: 175
+	--bg-color-2: 298
+	--red-color: 0
+	--yellow-color: 40
+	--purple-color: 280
+	--blue-color: 210
+	--green-color: 120
+
+body.dark
+	--font-color: hsl(0, 0%, 90%)
+	--font-color-r: hsl(0, 0%, 10%)
+	--bg-color-l: 20%
+	--main-color-l: 35%
+	--main-color-l-r: 65%
+	--main-color-l-bg: 10%
+	--color-1: 20
+	--color-2: 40
+	--color-3: 60
+	--color-1-r: 235
+	--color-2-r: 215
+	--color-3-r: 195
+
+body.home
+	--bg-color: var(--bg-color-home)
+body.article
+	--bg-color: var(--bg-color-article)
+body.edu
+	--bg-color: var(--bg-color-edu)
+body.links
+	--bg-color: var(--bg-color-links)
+body.about
+	--bg-color: var(--bg-color-about)
+body.unknown
+	--bg-color: var(--bg-color-unknown)
+
+// 仿vim 装饰
+.vim-header
+	display: flex
+	.decorate-r,
+	.decorate
+		position: relative
+		& > :nth-child(1)
+			display: inline-block
+			white-space: pre
+			position: relative
+			z-index: 2
+		div
+			z-index: 1
+			position: absolute
+			top: 0
+			display: block
+			content: ''
+			white-space: pre
+			width: 3.5ch
+			height: 100%
+			background: inherit
+			transform-origin: top right
+	.decorate
+		padding-left: 3ch
+		& > div
+			right: -2.5ch
+			transform: skewX(-45deg)
+			border-right: solid 1px
+	.decorate:nth-child(1)
+		padding-left: 1ch
+		background-color: color.get-color-main-r(1)
+		color: var(--font-color-r)
+	.decorate:nth-child(2)
+		padding-left: 2.5ch
+		background-color: color.get-color-3(1)
+		color: color.get-color-main-r(1)
+	.decorate-r
+		padding-right: 3ch
+		& > div
+			left: -0.5ch
+			transform: skewX(-45deg)
+			border-left: solid 1px
+	.decorate-r:nth-last-child(2)
+		padding-right: 2.5ch
+		background-color: color.get-color-3(1)
+		color: color.get-color-main-r(1)
+	.decorate-r:nth-last-child(1)
+		padding-right: 1ch
+		background-color: color.get-color-main-r(1)
+		color: var(--font-color-r)
+	.space
+		margin: auto
+		padding: 0 2ch
+		& + .decorate-r > div
+			border: none
+	.decorate:has(+ .space) > div
+		border: none
+
+	button
+		background: none
+		border: none
+		color: inherit
+		cursor: pointer
+		font: inherit
+		padding: 0
+		margin: 0
+
+	.title
+		overflow: hidden
+		display: flex
+		& > *:nth-child(1)
+			flex: 1
+			text-overflow: ellipsis
+			overflow: hidden
+
+	@media(max-width: 1200px)
+		.unnecessary
+			display: none
+
+code
+	font-family: "JetBrainsMonoNL NF", monospace
+
+.page-up-enter-active
+	animation: page-up-enter 0.3s ease forwards
+.page-up-leave-active
+	animation: page-up-leave 0.3s ease forwards
+
+@keyframes page-up-enter
+	from
+		transform: translateY(100dvh)
+	to
+		transform: translateY(0)
+
+@keyframes page-up-leave
+	from
+		transform: translateY(0)
+	to
+		transform: translateY(-100dvh)
