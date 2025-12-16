@@ -92,7 +92,7 @@ const specialPageMap: Record<string, SpAbsPageData> = {
 	},
 	'/links': {
 		type: 'page',
-		component: () => import('@/components/SpecialPages/NoWriting.vue'),
+		component: () => import('@/components/SpecialPages/Friends.vue'),
 		title: '友链',
 		description: '友情链接',
 		url: '/links',

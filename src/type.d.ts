@@ -16,3 +16,13 @@ declare module '*.md' {
 	const component: import('vue').Component
 	export default component
 }
+
+declare module '*.yml' {
+	const data: {
+		name: string
+		url: string
+		desc: string
+		avatar: string
+	}[] = []
+	export default data
+}
