@@ -1,7 +1,8 @@
 <template>
 	<nav class="friends">
-		<div v-for="friend in friends" :key="friend.url" class="friend-card"
-			@click="jumpTo(friend.url)">
+		<a v-for="friend in friends" :key="friend.url" class="friend-card"
+			href=""
+			@click.prevent="jumpTo(friend.url)">
 			<img :src="friend.avatar" :alt="friend.name">
 			<div>
 				<h3>{{ friend.name }}</h3>
@@ -10,7 +11,7 @@
 					{{ friend.desc }}
 				</p>
 			</div>
-		</div>
+		</a>
 	</nav>
 	
 	<div class="space" />
@@ -31,37 +32,70 @@
 import friends from '/friends.yml'
 
 function jumpTo(url: string) {
-	window.open(url, '_blank')
+	window.open(url)
 }
 </script>
 
 <style lang="sass" scoped>
+@use '@/assets/color'
+
 .friends
 	margin: 1ch
 	display: flex
 	width: 100%
 	flex-direction: column
 
+nav
+	overflow: hidden
+
 .friend-card
 	display: flex
 	align-items: center
 	width: 100%
 	height: 7ch
+	padding-left: 2ch
+	padding-right: 1ch
+	position: relative
+	overflow: hidden
+	text-decoration: none
 
 	& > img
-		width: 7ch
-		height: 7ch
+		width: 6ch
+		height: 6ch
 		margin-right: 1ch
 
 	& > div
 		flex: 1
 		margin: auto 0
+		overflow: hidden
+		flex-direction: column
 	& > div > h3
 		font-size: 2.5ch
+		white-space: pre
+		overflow: hidden
+		text-overflow: ellipsis
 		margin: 0
+	& > div > hr
+		margin: 0.1ch 0
 	& > div > p
 		font-size: 1.5ch
+		white-space: pre
+		overflow: hidden
+		text-overflow: ellipsis
 		margin: 0
+
+	&:hover
+		cursor: pointer
+		background-color: color.get-color-main(0.2)
+		&::before
+			content: ''
+			position: absolute
+			left: 0
+			top: 0
+			width: 1.25ch
+			height: 100%
+			background-color: color.get-color-main-r(0.8)
+			pointer-events: none
 
 .space
 	height: 4ch
