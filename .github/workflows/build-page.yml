@@ -13,8 +13,16 @@ permissions:
     pages: write
     id-token: write
 
+# 允许一个并发部署
+concurrency:
+    group: "pages"
+    cancel-in-progress: true
+
 jobs:
-    build:
+    deploy:
+        environment:
+            name: github-pages
+            url: ${{ steps.deployment.outputs.page_url }}
         runs-on: ubuntu-latest
         steps:
             - name: 设置 Nodejs
