@@ -35,6 +35,8 @@ body
 	--blue-color: 210
 	--green-color: 120
 
+	scrollbar-color: color.get-color-main(0.8) transparent
+
 body.dark
 	--font-color: hsl(0, 0%, 90%)
 	--font-color-r: hsl(0, 0%, 10%)
@@ -160,3 +162,15 @@ code
 		transform: translateY(0)
 	to
 		transform: translateY(-100dvh)
+
+// /*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
+// ::-webkit-scrollbar
+// 	width: 5px
+// 	height: 5px
+// 	background-color: transparent
+// 	margin: 2px
+
+// /*定义滑块 内阴影+圆角*/
+// ::-webkit-scrollbar-thumb
+// 	border-radius: 10px
+// 	background-color: color.get-color-main-r(0.8)

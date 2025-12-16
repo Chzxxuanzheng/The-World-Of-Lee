@@ -108,6 +108,7 @@ body div.code-body
 	flex-direction: row-reverse
 	overflow-y: hidden
 	overflow-x: auto
+	padding-bottom: 10px // 给滚动条留位置
 	:deep(pre)
 		margin: 0
 		flex: 1
