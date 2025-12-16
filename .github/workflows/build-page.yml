@@ -1,0 +1,52 @@
+name: 编译部署
+
+on:
+    push:
+        branches:
+            - master
+
+    # 这个选项可以使你手动在 Action tab 页面触发工作流
+    workflow_dispatch:
+
+permissions:
+    contents: read
+    pages: write
+    id-token: write
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - name: 设置 Nodejs
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 20.x
+
+            - name: 拉取分支
+              uses: actions/checkout@v4
+
+            - name: 缓存依赖
+              uses: actions/cache@v4
+              with:
+                  # 缓存 yarn/npm/pnpm 以及 node_modules，适配 Yarn v1/v2+ 和 pnpm
+                  path: |
+                      ~/.cache/yarn
+                      .yarn/cache
+                      ~/.npm
+                      node_modules
+                      yarn.lock
+                  key: page
+
+            - name: 更新依赖
+              run: yarn
+
+            - name: 构建
+              run: yarn build
+
+            - name: 配置 Pages 环境
+              uses: actions/configure-pages@v5
+
+            - name: 上传构建产物
+              uses: actions/upload-pages-artifact@v3
+              with:
+                  path: "./"

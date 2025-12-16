@@ -32,6 +32,7 @@ watchEffect(async ()=>{
 
 let lastIsIndex = false
 watch(() => route.path, ()=>{
+	if (route.path === '/') return
 	const newPage = PageController.getPage(route.path)
 	if (newPage.type === 'index') {
 		lastIsIndex = true

@@ -34,7 +34,7 @@ function pageCheck(to: RouteLocationNormalized) {
 }
 
 function updatePageController(to: RouteLocationNormalized) {
-	PageController.currentPath = to.path
+	PageController.currentPath = to.path	
 }
 
 export default [pageCheck, updatePageController]

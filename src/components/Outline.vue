@@ -19,8 +19,8 @@
 </template>
 
 <script setup lang="ts">
+import type { PageData } from '@/function/pageController'
 import { runtime } from '@/function/state'
-import type { PageInfo } from 'virtual:pages-info'
 import { shallowRef, watchEffect } from 'vue'
 import { useRouter } from 'vue-router'
 
@@ -40,7 +40,7 @@ function jump(href: string) {
 let root: HTMLElement
 let lastUrl = ''
 const { page } = defineProps<{
-	page: PageInfo | undefined
+	page: PageData | undefined
 }>()
 
 interface RenderInfo {

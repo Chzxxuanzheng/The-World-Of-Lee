@@ -8,6 +8,6 @@
 import Outline from './Outline.vue'
 import WinSwitcherByPage from './WinSwitcherByPage.vue'
 import { shallowRef } from 'vue'
-import type { PageInfo } from 'virtual:pages-info'
-const page = shallowRef<PageInfo | undefined>()
+import type { PageData } from '@/function/pageController'
+const page = shallowRef<PageData | undefined>()
 </script>

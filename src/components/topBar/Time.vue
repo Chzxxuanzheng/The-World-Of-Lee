@@ -44,6 +44,7 @@ function createTimeString(): string {
 }
 
 function updateTime() {
+	if (import.meta.env.SSR) return
 	time.value = createTimeString()
 	const now = Date.now()
 	const msToNext = 1000 - (now % 1000)

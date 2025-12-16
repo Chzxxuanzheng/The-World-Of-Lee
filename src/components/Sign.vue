@@ -12,7 +12,7 @@
 <script setup lang="ts">
 import { useWindowSize } from '@/function/state'
 import { useSafeTimeout } from '@/function/utils'
-import { reactive } from 'vue'
+import { onMounted, reactive } from 'vue'
 
 interface ShowTextInfo {
 	chr: string,
@@ -137,7 +137,10 @@ const TitleAnimator = {
 TitleAnimator.titleList.push('前进，前进，不择手段的前进！')
 TitleAnimator.titleList.push('狂风暴雨来阻挡，阻挡难耐少年郎')
 TitleAnimator.titleList.push('一群人可以走的更远，一个人可以走的更快')
-TitleAnimator.start()
+
+onMounted(()=>{
+	TitleAnimator.start()
+})
 
 // 确定文字大小
 const { vw } = useWindowSize()
