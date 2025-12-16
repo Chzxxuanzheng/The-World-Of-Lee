@@ -1,4 +1,4 @@
-import { onMounted, onUnmounted, type ShallowRef, shallowRef, watchEffect } from 'vue'
+import { onUnmounted, type ShallowRef, shallowRef, watchEffect } from 'vue'
 
 /**
  * 每帧执行一次
@@ -11,7 +11,7 @@ export function useFrame(func: ()=>void) {
 		if (!on) return
 		requestAnimationFrame(main)
 	}
-	onMounted(main)
+	main()
 	onUnmounted(()=>on=false)
 }
 

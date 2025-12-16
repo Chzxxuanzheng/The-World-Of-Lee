@@ -1,5 +1,8 @@
 <template>
-	<div ref="blob-container" class="blobs">
+	<div ref="blob-container" class="blobs"
+		:class="{
+			phone: phone
+		}">
 		<div v-for="i in range(BALL_NUM)" v-once ref="blob"
 			:key="i"
 			:style="{
@@ -9,8 +12,10 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, useTemplateRef } from 'vue'
+import { onMounted, shallowRef, useTemplateRef } from 'vue'
 import { ranChoice, random, useEventListener, useFrame } from '../function/utils'
+
+const phone = shallowRef(false)
 
 const blobsContainer = useTemplateRef('blob-container')
 const blobs = useTemplateRef('blob')
@@ -116,16 +121,6 @@ class BlobController {
 
 let blobsControllers: BlobController[]|undefined = undefined
 let frames = 0
-useFrame(()=>{
-	frames ++
-	if (!blobsControllers) {
-		initBlobs()
-	}else {
-		for (const controller of blobsControllers) {
-			controller.update(frames)
-		}
-	}
-})
 function initBlobs() {
 	blobsControllers = blobs.value!.map(
 		(blobEl) => new BlobController(blobEl),
@@ -133,6 +128,20 @@ function initBlobs() {
 }
 
 onMounted(()=>{
+	const mobile = /Mobi|Android|iPhone|iPad|iPod|Mobile|Tablet/i.test(navigator.userAgent)
+        || window.matchMedia('(pointer: coarse)').matches
+	phone.value = mobile
+	if (phone.value) return
+	useFrame(()=>{
+		frames ++
+		if (!blobsControllers) {
+			initBlobs()
+		}else {
+			for (const controller of blobsControllers) {
+				controller.update(frames)
+			}
+		}
+	})
 	useEventListener(window, 'click', (event: MouseEvent) => {
 		const dom = document.createElement('div')
 		dom.style.position = 'absolute'
@@ -168,6 +177,9 @@ onMounted(()=>{
 	height: 100%
 	filter: blur(140px)
 	pointer-events: none
+
+.blobs.phone
+	display: none
 
 .blob
 	width: max(240px, min(50vw, 50dvh))

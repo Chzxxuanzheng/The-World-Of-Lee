@@ -41,7 +41,7 @@
 import PageController from '@/function/pageController.ts'
 import { runtime } from '@/function/state'
 import { useFrame } from '@/function/utils.ts'
-import { computed, shallowRef } from 'vue'
+import { computed, onMounted, shallowRef } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
 const router = useRouter()
@@ -113,13 +113,15 @@ allData.value = allData.value.sort((a, b)=>{
 const currentSelected = shallowRef<number>(0)
 const selectTarget = shallowRef<number>(0)
 
-useFrame(()=>{
-	if (currentPage.value) return
-	if (currentSelected.value < selectTarget.value) {
-		currentSelected.value++
-	} else if (currentSelected.value > selectTarget.value) {
-		currentSelected.value--
-	}
+onMounted(()=>{
+	useFrame(()=>{
+		if (currentPage.value) return
+		if (currentSelected.value < selectTarget.value) {
+			currentSelected.value++
+		} else if (currentSelected.value > selectTarget.value) {
+			currentSelected.value--
+		}
+	})
 })
 </script>
 
