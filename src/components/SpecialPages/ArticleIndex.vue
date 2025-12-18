@@ -9,8 +9,8 @@
 	</div>
 	<div v-for="(article, id) in showData" :key="article.title">
 		<span class="article-title"
-			:class="{selected: (!currentPage && currentSelected === id)
-				|| (currentPage && currentPage.url === article.url)
+			:class="{selected: (selfIsMain && currentSelected === id)
+				|| (!selfIsMain && currentPage.url === article.url)
 			}"
 			@click="jumpToArticle(article.url)"
 			@mouseover="selectTarget = id">
@@ -42,10 +42,9 @@ import PageController from '@/function/pageController.ts'
 import { runtime } from '@/function/state'
 import { useFrame } from '@/function/utils.ts'
 import { computed, onMounted, shallowRef } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
+import { useRouter } from 'vue-router'
 
 const router = useRouter()
-const route = useRoute()
 
 const page = PageController.useCurrentPage()
 
@@ -65,9 +64,9 @@ function switchTag(tag: string) {
 	}
 }
 
-const currentPage = computed(()=>{
-	void route.path
-	return PageController.getCurrentPage()
+const currentPage = PageController.useCurrentPage()
+const selfIsMain = computed(()=>{
+	return currentPage.value.url === '/article'
 })
 
 interface ArticleIndexInfo {
@@ -115,7 +114,7 @@ const selectTarget = shallowRef<number>(0)
 
 onMounted(()=>{
 	useFrame(()=>{
-		if (currentPage.value) return
+		if (!selfIsMain.value) return
 		if (currentSelected.value < selectTarget.value) {
 			currentSelected.value++
 		} else if (currentSelected.value > selectTarget.value) {
