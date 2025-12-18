@@ -5,9 +5,17 @@
 				<span class="back-icon" @click="goBack"></span>
 				<div class="title">
 					<h1>{{ page.title }}</h1>
-					<div v-if="page.pubDate" class="head-time">
-						<span class="icon">󰢧</span>
-						<span>{{ page.pubDate }}</span>
+					<div class="head-time">
+						<template v-if="page.pubDate">
+							<span class="icon">󰢧</span>
+							<span>{{ page.pubDate }}</span>
+						</template>
+						<template v-for="(tag, index) in page.tags" :key="index">
+							<span class="tag">	
+								<span class="icon"></span>
+								<span>{{ tag }}</span>
+							</span>
+						</template>
 					</div>
 				</div>
 			</div>
@@ -106,6 +114,8 @@ onMounted(()=>emit('ready'))
 	display: flex
 	.icon
 		margin-right: 1ch
+		margin-left: 2ch
+		color: color.get-color-main-r()
 
 body div.content
 	padding: 2rem

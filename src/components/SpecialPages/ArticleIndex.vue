@@ -159,6 +159,7 @@ onMounted(()=>{
 			display: inline-block
 		.icon
 			margin-right: 1ch
+			color: color.get-color-main-r()
 		hr
 			border: dashed 2px
 			border-top: none
