@@ -44,6 +44,7 @@ export const runtime = shallowReactive({
 		setRoot: (el: HTMLElement)=>void
 		refresh: ()=>void
 	}>,
+	colorMode: 'dark' as 'dark' | 'light',
 	get phoneMode() {
 		return isPhoneMode.value
 	},

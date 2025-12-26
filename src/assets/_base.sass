@@ -1,0 +1,25 @@
+@use 'color'
+
+body
+	font-family: "JetBrainsMonoNL NF", monospace
+	background-color: color.get-bg-color()
+	color: var(--font-color)
+	transition: background-color 0.3s, color 0.3s
+	scrollbar-color: color.get-color-main(0.8) transparent
+	--bg-main-1: #{color.get-bg-color-1()}
+	--bg-main-2: #{color.get-bg-color-2()}
+
+	--main-color: 200
+	--bg-color-home: 260
+	--bg-color-article: 215
+	--bg-color-edu: 160
+	--bg-color-links: 60
+	--bg-color-about: 200
+	--bg-color-unknown: 0
+	--bg-color-1: 175
+	--bg-color-2: 298
+	--red-color: 0
+	--yellow-color: 40
+	--purple-color: 280
+	--blue-color: 210
+	--green-color: 120

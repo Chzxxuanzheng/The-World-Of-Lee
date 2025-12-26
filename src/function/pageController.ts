@@ -26,6 +26,8 @@ export interface SpPageData {
 	title: string
 	description: string
 	type: 'page'
+	noOutline?: boolean
+	noComments?: boolean
 }
 
 export interface NotFoundData {
@@ -35,6 +37,8 @@ export interface NotFoundData {
 	description: string
 	component: () => Promise<{default: Component}>
 	url: string
+	noOutline: true
+	noComments: true
 }
 
 export type SpAbsPageData = IndexData | SpPageData
@@ -89,6 +93,7 @@ const specialPageMap: Record<string, SpAbsPageData> = {
 		description: '一些编程相关的教程',
 		url: '/edu',
 		noOutline: true,
+		noComments: true,
 	},
 	'/links': {
 		type: 'page',
@@ -130,6 +135,7 @@ function notFound(url: string): NotFoundData {
 		component: () => import('#/404.md'),
 		description: '仅需114514元，助力语文高考！海量试题，名师解析！',
 		noOutline: true,
+		noComments: true,
 	}
 }
 

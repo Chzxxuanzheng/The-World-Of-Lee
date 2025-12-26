@@ -12,7 +12,7 @@
 <script setup lang="ts">
 import { shallowRef, watchEffect } from 'vue'
 import { useLocalStorage } from '../../function/utils.ts'
-import { getDocument, getWindow } from '../../function/state.ts'
+import { getDocument, getWindow, runtime } from '../../function/state.ts'
 
 const mode = useLocalStorage<'light' | 'dark' | 'auto'>('dark-mode', 'auto')
 
@@ -46,6 +46,7 @@ watchEffect(()=>{
 	}
 	getDocument()?.body.classList.remove('light', 'dark')
 	getDocument()?.body.classList.add(appliedMode)
+	runtime.colorMode = appliedMode
 })
 </script>
 

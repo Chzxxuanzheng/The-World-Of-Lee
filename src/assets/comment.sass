@@ -1,0 +1,241 @@
+@use 'color'
+@forward 'base'
+
+body
+	font-family: "JetBrainsMonoNL NF", monospace !important
+
+.gsc-comments
+	border-top: 2px solid color.get-color-3-r(0.5)
+	padding-top: 1rem
+
+.gsc-reactions
+	summary
+		box-shadow: inset 0 0 8px color.get-color-2()
+	button
+		transition: background-color 0.3s
+
+.gsc-header
+	padding: 0 !important
+
+form
+	border-radius: 8px !important
+	padding: 10px
+	border: 1px solid
+	position: relative
+	border-color: color.get-color-white(0.5) !important
+	background-color: color.get-color-white(0.1) !important
+	box-shadow: inset 0 0 8px color.get-color-white(0.3)
+	.gsc-comment-box-tabs
+		background-color: transparent !important
+		border-top: none !important
+		border-bottom: none !important
+		:nth-child(1)
+			margin: 0 !important
+			& > button
+				position: relative
+				display: inline-block
+				padding: 0 1ch !important
+				border-width: 0 !important
+				border-left: 2px solid color.get-color-3() !important
+				cursor: pointer !important
+				transition: background-color 0.3s, border-left-color 0.3s
+				border-radius: 0 !important
+				margin: 0 !important
+				&:hover
+					background-color: color.get-color-2(0.3)
+				&::after
+					content: '✖'
+					margin-left: 10px
+				&:nth-child(2)
+					border-right: 2px solid color.get-color-3()
+
+			button.color-bg-canvas
+				border-left: 2px solid color.get-color-main-r() !important
+				background-color: color.get-color-2(0.5) !important
+				color: color.get-color-main-r() !important
+
+		.gsc-comment-box-md-toolbar
+			display: none
+
+	.gsc-comment-box-main
+		margin: 0 !important
+		.gsc-comment-box-write
+			box-shadow: none !important
+		textarea
+			background-color: transparent !important
+			border: none !important
+			&::placeholder
+				color: color.get-color-2-r(0.5) !important
+		.gsc-comment-box-textarea-extras
+			height: 0 !important
+			padding: 0 !important
+			border: none !important
+			& > a
+				position: absolute
+				top: 12px
+				left: 150px
+			@media (max-width: 400px)
+				display: none
+		.markdown
+			border: none !important
+			padding-bottom: 8px !important
+
+	.gsc-comment-box-bottom
+		margin: 0 !important
+		.gsc-comment-box-buttons
+			position: absolute
+			top: 10px
+			right: 10px
+			a, button
+				padding: 0 4px !important
+				border-radius: 4px !important
+				border: 1px solid color.get-color-main(0.5) !important
+				background-color: color.get-color-main(0.1) !important
+				&:hover
+					background-color: color.get-color-main(0.5) !important
+		& > button
+			position: absolute
+			top: 10px
+			right: 70px
+			@media (max-width: 400px)
+				display: none
+
+.gsc-comment > div
+	border-radius: 8px !important
+	padding: 4px
+	border: 1px solid
+	position: relative
+	border-color: color.get-color-white(0.5) !important
+	background-color: color.get-color-white(0.1) !important
+	box-shadow: inset 0 0 8px color.get-color-white(0.3)
+	&.color-box-border-info
+		border-color: color.get-color-main(0.5) !important
+		background-color: color.get-color-main(0.1) !important
+		box-shadow: inset 0 0 8px color.get-color-main(0.3) !important
+
+.gsc-replies
+	background-color: transparent !important
+
+.markdown
+	h1, h2, h3, h4, h5, h6
+		position: relative
+		color: color.get-color-main-r()
+		scroll-margin-top: 10ch
+
+	pre.notranslate
+		border-radius: 8px !important
+		padding: 10px
+		border: 1px solid
+		position: relative
+		border-color: color.get-color-1() !important
+		background-color: color.get-color-3(0.1) !important
+		box-shadow: inset 0 0 8px color.get-color-2()
+
+	a
+		color: color.get-color-main-r(0.8)
+		transition: color 0.3s, border-bottom-color 0.3s
+		&:hover
+			color: color.get-color-main-r(1)
+
+	& > code.notranslate,
+	p code.notranslate
+		white-space: pre
+		margin: 0 2px
+		font-size: 0.8rem
+		padding: 0 4px
+		border-radius: 4px
+		border: 1px solid color.get-color-main-r(1)
+		background-color: color.get-color-1(0.5)
+
+	table
+		border: none !important
+	table, tr
+		background-color: transparent !important
+	th
+		color: color.get-color-main-r()
+		font-weight: bold
+	tr, td, th, table
+		border: none !important
+
+main
+	--color-btn-text: var(--font-color)
+	--color-btn-bg: #373e47
+	--color-btn-border: #cdd9e51a
+	--color-btn-shadow: 0 0 #0000
+	--color-btn-inset-shadow: 0 0 #0000
+	--color-btn-hover-bg: #444c56
+	--color-btn-hover-border: #768390
+	--color-btn-active-bg: #3d444d
+	--color-btn-active-border: #636e7b
+	--color-btn-selected-bg: #2d333b
+	--color-btn-primary-text: #fff
+	--color-btn-primary-bg: #347d39
+	--color-btn-primary-border: #cdd9e51a
+	--color-btn-primary-shadow: 0 0 #0000
+	--color-btn-primary-inset-shadow: 0 0 #0000
+	--color-btn-primary-hover-bg: #46954a
+	--color-btn-primary-hover-border: #cdd9e51a
+	--color-btn-primary-selected-bg: #347d39
+	--color-btn-primary-selected-shadow: 0 0 #0000
+	--color-btn-primary-disabled-text: var(--color-font)
+	--color-btn-primary-disabled-bg: #347d3999
+	--color-btn-primary-disabled-border: #cdd9e51a
+	--color-action-list-item-default-hover-bg: #909dab1f
+	--color-segmented-control-bg: #{color.get-color-2(0.5)}
+	--color-segmented-control-button-bg: #{color.get-color-main(0.1)}
+	--color-segmented-control-button-selected-border: #{color.get-color-main-r()}
+	--color-fg-default: var(--font-color)
+	--color-fg-muted: #{color.get-color-2-r()}
+	--color-fg-subtle: #545d68
+	--color-canvas-default: #{color.get-color-white-r(0.1)}
+	--color-canvas-overlay: #161b22
+	--color-canvas-inset: #15202b
+	--color-canvas-subtle: #{color.get-color-3(0.1)}
+	--color-border-default: #{color.get-color-1-r(0.5)}
+	--color-border-muted: #373e47
+	--color-neutral-muted: #636e7b66
+	--color-accent-fg: #{color.get-color-main-r()}
+	--color-accent-emphasis: #{color.get-color-main(0.5)}
+	--color-accent-muted: #4184e466
+	--color-accent-subtle: #{color.get-color-main(0.1)}
+	--color-success-fg: #57ab5a
+	--color-attention-fg: #c69026
+	--color-attention-muted: #ae7c1466
+	--color-attention-subtle: #ae7c1426
+	--color-danger-fg: #e5534b
+	--color-danger-muted: #e5534b66
+	--color-danger-subtle: #e5534b1a
+	--color-primer-shadow-inset: 0 0 #0000
+	--color-scale-gray-7: #373e47
+	--color-scale-blue-8: #143d79
+	--color-social-reaction-bg-hover: var(--color-scale-gray-7)
+	--color-social-reaction-bg-reacted-hover: #{color.get-color-main(0.5)}
+
+main .pagination-loader-container
+	background-image: url(https://github.com/images/modules/pulls/progressive-disclosure-line-dark.svg)
+
+/*! Custom CSS */
+.gsc-reactions-count
+	display: none
+
+.gsc-timeline
+	flex-direction: column-reverse
+
+.gsc-header
+	padding-bottom: 1rem
+
+.gsc-comments>.gsc-header
+	order: 1
+
+.gsc-comments>.gsc-comment-box
+	order: 2
+	margin-bottom: 1rem
+
+.gsc-comments>.gsc-timeline
+	order: 3
+
+.gsc-homepage-bg
+	background-color: #15202b
+
+main .gsc-loading-image
+	background-image: url(https://github.githubassets.com/images/mona-loading-dimmed.gif)

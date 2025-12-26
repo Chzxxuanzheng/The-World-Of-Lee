@@ -25,6 +25,7 @@
 		<div ref="md">
 			<component :is="renderFunc" />
 		</div>
+		<Comments v-if="!(page['noComments'] === true)" />
 	</div>
 </template>
 
@@ -32,6 +33,8 @@
 import PageController, { type PageData } from '@/function/pageController.ts'
 import { onMounted, useTemplateRef, watchEffect } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
+import Comments from './Comments.vue'
+
 
 const emit = defineEmits<{
 	scrollTo: [el: HTMLElement]
