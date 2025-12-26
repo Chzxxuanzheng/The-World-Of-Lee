@@ -105,7 +105,6 @@ body div.code-body
 	line-height: 1
 	padding: 1ch 0 0 0
 	display: flex
-	flex-direction: row-reverse
 	overflow-y: hidden
 	overflow-x: auto
 	padding-bottom: 10px // 给滚动条留位置
