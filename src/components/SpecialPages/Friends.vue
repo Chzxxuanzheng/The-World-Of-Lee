@@ -1,8 +1,7 @@
 <template>
 	<nav class="friends">
 		<a v-for="friend in friends" :key="friend.url" class="friend-card"
-			href=""
-			@click.prevent="jumpTo(friend.url)">
+			:href="friend.url" target="_blank">
 			<img :src="friend.avatar" :alt="friend.name">
 			<div>
 				<h3>{{ friend.name }}</h3>
@@ -17,23 +16,26 @@
 	<div class="space" />
 
 	<h3>添加友情链接</h3>
-	提交 <a href="https://github.com/Chzxxuanzheng/The-World-Of-Lee/pulls" target="_blank">Pull Request</a> 至 <a href="https://github.com/Chzxxuanzheng/The-World-Of-Lee/blob/master/friends.yml" target="_blank">friends.yml</a>
+	提交 <a href="https://github.com/Chzxxuanzheng/The-World-Of-Lee/pulls" target="_blank">Pull Request</a> 至 <a href="https://github.com/Chzxxuanzheng/The-World-Of-Lee/blob/master/friends.yml" target="_blank">friends.yml</a>。也可以在下方评论发出请求。
 
 	<h4>我的信息</h4>
-	<ul>
-		<li><b>站点名称:</b>里世界</li>
-		<li><b>站点url:</b>https://leenet.xyz</li>
-		<li><b>描述:</b>Welcome To The World Of Lee</li>
-		<li><b>头像URL:</b>https://leenet.xyz/avatar.png</li>
-	</ul>
+	<div class="custom-block normally">
+		<CodeBlock :info="{
+			lang: 'yaml',
+			name: 'friends.yml',
+			needLineNumbers: false,
+			startLine: 0,
+			needWrap: false,
+			lineCount: 4,
+		}">
+			<pre class="shiki shiki-themes min-light min-dark" style="--shiki-light: #24292eff; --shiki-dark: #b392f0; --shiki-light-bg: #ffffff; --shiki-dark-bg: #1f1f1f;"><code><span class="line"><span style="--shiki-light: #24292EFF; --shiki-dark: #B392F0;">- </span><span style="--shiki-light: #D32F2F; --shiki-dark: #F8F8F8;">name</span><span style="--shiki-light: #D32F2F; --shiki-dark: #F97583;">:</span><span style="--shiki-light: #22863A; --shiki-dark: #FFAB70;"> 里世界</span></span><span class="line"><span style="--shiki-light: #D32F2F; --shiki-dark: #F8F8F8;">  url</span><span style="--shiki-light: #D32F2F; --shiki-dark: #F97583;">:</span><span style="--shiki-light: #22863A; --shiki-dark: #FFAB70;"> https://leenet.xyz</span></span><span class="line"><span style="--shiki-light: #D32F2F; --shiki-dark: #F8F8F8;">  desc</span><span style="--shiki-light: #D32F2F; --shiki-dark: #F97583;">:</span><span style="--shiki-light: #22863A; --shiki-dark: #FFAB70;"> Welcome To The World Of Lee</span></span><span class="line"><span style="--shiki-light: #D32F2F; --shiki-dark: #F8F8F8;">  avatar</span><span style="--shiki-light: #D32F2F; --shiki-dark: #F97583;">:</span><span style="--shiki-light: #22863A; --shiki-dark: #FFAB70;"> https://leenet.xyz/avatar.png</span></span><span class="line" /></code></pre>
+		</CodeBlock>
+	</div>
 </template>
 
 <script setup lang="ts">
+import CodeBlock from '../CodeBlock.vue'
 import friends from '/friends.yml'
-
-function jumpTo(url: string) {
-	window.open(url)
-}
 </script>
 
 <style lang="sass" scoped>

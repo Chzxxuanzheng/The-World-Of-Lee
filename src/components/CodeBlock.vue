@@ -51,7 +51,6 @@
 import { shallowRef, useTemplateRef } from 'vue'
 
 const { info } = defineProps<{info: {
-	content: Promise<string>
 	lang: string
 	name: string
 	needLineNumbers: boolean
