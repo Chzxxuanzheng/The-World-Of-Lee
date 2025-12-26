@@ -24,7 +24,7 @@
 		flex-direction: column
 		flex: 1
 		border-radius: 8px
-		padding: 20px
+		padding: 10px
 		background-color: color.get-color-1(0.5)
 		border: 2px solid color.get-color-2()
 		box-shadow: 0 0 20px color.get-color-3(0.5)

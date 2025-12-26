@@ -112,6 +112,8 @@ onMounted(()=>emit('ready'))
 		transform: translateY(-50%)
 		&:hover
 			opacity: 1
+		@media (max-width: 600px)
+			display: none
 
 .head-time
 	display: flex
@@ -122,6 +124,8 @@ onMounted(()=>emit('ready'))
 
 body div.content
 	padding: 2rem
+	@media (max-width: 600px)
+		padding: 1rem
 	:deep(:is(h1, h2, h3, h4, h5, h6))
 		position: relative
 		color: color.get-color-main-r()
