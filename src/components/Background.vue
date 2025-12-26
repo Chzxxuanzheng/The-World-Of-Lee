@@ -13,14 +13,14 @@
 
 <script setup lang="ts">
 import { onMounted, shallowRef, useTemplateRef } from 'vue'
-import { ranChoice, random, useEventListener, useFrame } from '../function/utils'
+import { ranChoice, random, useEventListener, useInterval } from '../function/utils'
 
 const phone = shallowRef(false)
 
 const blobsContainer = useTemplateRef('blob-container')
 const blobs = useTemplateRef('blob')
-const MIN_SPEED = 0.5
-const MAX_SPEED = 2
+const MIN_SPEED = 2.5
+const MAX_SPEED = 10
 const CHANGE_RATE = 0.01
 const MAX_SIZE = 1
 const MIN_SIZE = 0.1
@@ -132,7 +132,7 @@ onMounted(()=>{
         || window.matchMedia('(pointer: coarse)').matches
 	phone.value = mobile
 	if (phone.value) return
-	useFrame(()=>{
+	useInterval(()=>{
 		frames ++
 		if (!blobsControllers) {
 			initBlobs()
@@ -141,7 +141,7 @@ onMounted(()=>{
 				controller.update(frames)
 			}
 		}
-	})
+	}, 100)
 	useEventListener(window, 'click', (event: MouseEvent) => {
 		const dom = document.createElement('div')
 		dom.style.position = 'absolute'
