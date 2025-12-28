@@ -7,6 +7,8 @@ declare module 'virtual:pages-info' {
 		url: string
 		rawUrl: string
 		title: string
+		minutes: number
+		words: number
 	}
 	const data: PageInfo[]
 	export default data

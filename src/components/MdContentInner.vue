@@ -6,12 +6,16 @@
 				<div class="title">
 					<h1>{{ page.title }}</h1>
 					<div class="head-time">
-						<template v-if="page.pubDate">
+						<span v-if="page.pubDate">
 							<span class="icon">󰢧</span>
 							<span>{{ page.pubDate }}</span>
-						</template>
+						</span>
+						<span v-if="page.minutes">
+							<span class="icon"></span>
+							<span>{{ page.minutes }}min</span>
+						</span>
 						<template v-for="(tag, index) in page.tags" :key="index">
-							<span class="tag">	
+							<span>	
 								<span class="icon"></span>
 								<span>{{ tag }}</span>
 							</span>

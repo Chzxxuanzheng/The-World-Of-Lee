@@ -21,16 +21,20 @@
 					{{ article.abstract }}
 				</span>
 				<div class="info">
-					<span class="time">
-						<span class="icon">󰢧</span>
-						<span>{{ article.pubDate }}</span>
+					<span>
+						<span class="icon"></span>
+						<span>{{ article.minutes }}min</span>
 					</span>
 					<template v-for="(tag, index) in article.tags" :key="index">
-						<span class="tag">	
+						<span>	
 							<span class="icon"></span>
 							<span>{{ tag }}</span>
 						</span>
 					</template>
+					<span>
+						<span class="icon">󰢧</span>
+						<span>{{ article.pubDate }}</span>
+					</span>
 				</div>
 			</div>
 		</span>
@@ -41,6 +45,7 @@
 import PageController from '@/function/pageController.ts'
 import { runtime } from '@/function/state'
 import { useFrame } from '@/function/utils.ts'
+import type { PageInfo } from 'virtual:pages-info'
 import { computed, onMounted, shallowRef } from 'vue'
 import { useRouter } from 'vue-router'
 
@@ -69,11 +74,9 @@ const selfIsMain = computed(()=>{
 	return currentPage.value.url === '/article'
 })
 
-interface ArticleIndexInfo {
-	title: string
+interface ArticleIndexInfo extends PageInfo {
 	description: string
 	pubDate: string
-	url: string
 	abstract: string
 	tags?: string[]
 }
@@ -146,17 +149,11 @@ onMounted(()=>{
 		overflow: hidden
 		display: flex
 		flex-direction: column
-		& > span:nth-child(1)
-			margin-left: 1ch
-			overflow: hidden
-			text-overflow: ellipsis
-		& .time
-			margin:
-				left: 10px
-				right: 20px
-		& .tag
-			margin-left: 15px
-			display: inline-block
+
+		& > .info > span
+			margin-left: 1.5ch
+		& > .info > span:nth-child(1)
+			margin-left: 0
 		.icon
 			margin-right: 1ch
 			color: color.get-color-main-r()
