@@ -8,9 +8,9 @@
 			@wheel="onScroll">
 			<Sign />
 			<WindowManager />
-			<Background />
 		</div>
 	</div>
+	<Background />
 </template>
 
 <script setup lang="ts">
