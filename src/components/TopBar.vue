@@ -6,7 +6,7 @@
 		<TopTabEl>
 			<Time />
 		</TopTabEl>
-		<TopTabEl>
+		<TopTabEl class="left-button">
 			<DarkModeSwitch />
 		</TopTabEl>
 		<div class="space" />
@@ -17,6 +17,9 @@
 		<!-- tab栏 -->
 		<TopTabEl class="tabs">
 			<Tabs />
+		</TopTabEl>
+		<TopTabEl class="right-button">
+			<a href="/feed.xml" target="_blank" title="RSS"></a>
 		</TopTabEl>
 	</header>
 </template>
@@ -41,6 +44,10 @@ header
 	font-weight: bold
 	position: relative
 	margin: 5px
+	a
+		display: inline-block
+		color: unset
+		text-decoration: none
 	div
 		&.space
 			margin: auto
@@ -58,7 +65,8 @@ header
 		overflow: hidden
 	&.phone > div
 		display: none
+		&.left-button, &.right-button, &.tabs
+			display: inline-block
 		&.tabs
-			display: block
 			margin: auto
 </style>

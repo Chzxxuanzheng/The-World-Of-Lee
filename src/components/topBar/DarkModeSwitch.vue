@@ -1,12 +1,10 @@
 <template>
-	<div class="wrapper">
-		<Transition name="dark-switch" mode="out-in"
-			@click="switchMode">
-			<span v-if="mode === 'light'" key="light" title="日间模式"></span>
-			<span v-else-if="mode === 'dark'" key="dark" title="夜间模式"></span>
-			<span v-else key="auto" title="跟随系统">󰃡</span>
-		</Transition>
-	</div>
+	<Transition name="dark-switch" mode="out-in"
+		@click="switchMode">
+		<span v-if="mode === 'light'" key="light" title="日间模式"></span>
+		<span v-else-if="mode === 'dark'" key="dark" title="夜间模式"></span>
+		<span v-else key="auto" title="跟随系统">󰃡</span>
+	</Transition>
 </template>
 
 <script setup lang="ts">
