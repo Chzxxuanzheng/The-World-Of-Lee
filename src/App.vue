@@ -19,7 +19,7 @@ import Background from '@/components/Background.vue'
 import WindowManager from '@/components/WindowManager.vue'
 import TopBar from '@/components/TopBar.vue'
 import { usePageName } from '@/function/state'
-import { computed } from 'vue'
+import { computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import PageController from './function/pageController'
 import { useHead } from '@unhead/vue'
@@ -44,6 +44,27 @@ const titleName = computed(()=>{
 })
 useHead({
 	title: ()=>titleName.value,
+})
+
+onMounted(()=>{
+	window.addEventListener('click', (e: MouseEvent)=>{
+		if (e.button !== 0) return
+		if (e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) return
+
+		const target = e.target as HTMLElement | null
+		if (!target) return
+		if (target.tagName !== 'A') return
+		const href = (target as HTMLAnchorElement).getAttribute('href')
+		if (!href) return
+		if (href.startsWith('#')) return
+		if (href.startsWith('http')) {
+			e.preventDefault()
+			window.open(href, '_blank')
+		} else {
+			e.preventDefault()
+			void router.push(href)
+		}
+	})
 })
 </script>
 
