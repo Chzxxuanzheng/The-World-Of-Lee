@@ -49,6 +49,7 @@ export function rss(): ReturnType<typeof rssPlugin> {
 			link: `https://leenet.xyz/article${article.url}`,
 			description: article.description || '',
 			pubDate: transformDate(article.pubDate),
+			guid: `https://leenet.xyz/article${article.url}`,
 		})),
 	})
 }
