@@ -30,6 +30,8 @@
 
 如果你对这个博客感兴趣，可以前往[GitHub仓库](https://github.com/Chzxxuanzheng/The-World-Of-Lee)查看源码，求Star捏。这个对我真的非常重要(｡･ω･｡)ﾉ♡
 
-::: info
-上方的图片源自[KawaiiLogos](https://github.com/SAWARATSUKI/KawaiiLogos)
+::: info 感谢
+- 上方的图片源自[KawaiiLogos](https://github.com/SAWARATSUKI/KawaiiLogos)
+- 点击涟漪效果借鉴于[jquery.ripples](https://github.com/sirxemic/jquery.ripples)
+- 背景图片源于[wife](https://github.com/monbed/wife)
 :::
