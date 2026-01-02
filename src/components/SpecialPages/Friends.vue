@@ -53,7 +53,7 @@ nav
 .friend-card
 	display: flex
 	align-items: center
-	width: 100%
+	width: calc( 100% - 4ch )
 	height: 7ch
 	padding-left: 2ch
 	padding-right: 1ch
