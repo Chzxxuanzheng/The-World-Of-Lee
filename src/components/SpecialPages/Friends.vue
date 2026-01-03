@@ -16,6 +16,16 @@
 	<div class="space" />
 
 	<h3>添加友情链接</h3>
+	欢迎和我交换友链，我会很高兴的～
+
+	<h4>小要求</h4>
+	<ul>
+		<li>拒绝涉及国家政治等敏感内容，或以成人内容为主，以及涉嫌赌毒内容的网站！</li>
+		<li>必须可以提供https协议的连接，http协议的连接不接受</li>
+		<li>需要有一个清晰度还可以且能稳定加载的头像</li>
+	</ul>
+
+	<h4>添加方式</h4>
 	提交 <a href="https://github.com/Chzxxuanzheng/The-World-Of-Lee/pulls" target="_blank">Pull Request</a> 至 <a href="https://github.com/Chzxxuanzheng/The-World-Of-Lee/blob/master/friends.yml" target="_blank">friends.yml</a>。也可以在下方评论发出请求。
 
 	<h4>我的信息</h4>
