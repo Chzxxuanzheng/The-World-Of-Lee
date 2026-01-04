@@ -117,7 +117,7 @@ function clearPath(fullPath: string): string {
 	if (path.endsWith('/') && path.length > 1) {
 		path = path.slice(0, -1)
 	}
-	return path
+	return encodeURI(path)
 }
 
 function getParentPath(fullPath: string): string {
@@ -157,7 +157,7 @@ const PageController = {
 	getPage(fullPath: string): AbsPageData {
 		// 提取路径部分，去掉查询参数和hash
 		const path = clearPath(fullPath)
-		
+
 		// 先判断特殊页面
 		const specialPage = specialPageMap[path]
 		if (specialPage) return specialPage
