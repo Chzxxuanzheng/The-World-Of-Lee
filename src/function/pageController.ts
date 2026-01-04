@@ -117,7 +117,7 @@ function clearPath(fullPath: string): string {
 	if (path.endsWith('/') && path.length > 1) {
 		path = path.slice(0, -1)
 	}
-	return encodeURI(path)
+	return encodeURI(decodeURI(path))
 }
 
 function getParentPath(fullPath: string): string {
