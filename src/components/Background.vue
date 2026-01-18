@@ -34,7 +34,7 @@ let ripples!: Ripples
 
 async function loadImg() {
 	const name = await getImgName()
-	const url = `https://cdn.jsdelivr.net/gh/monbed/wife@main/${name}`
+	const url = `https://cdn.jsdmirror.com/gh/monbed/wife@main/${name}`
 	ripples = new Ripples(canvas.value as HTMLCanvasElement, url)
 	ripples.onload = () => {
 		loadFinish.value = true
