@@ -1,0 +1,1 @@
+import{_ as c,c as e,o as t}from"./app-v_D8OScE.js";const o={},s={class:"writing"};function n(r,_){return t(),e("span",s," 前方施工，车辆绕行 ")}const i=c(o,[["render",n],["__scopeId","data-v-097c29b0"]]);export{i as default};

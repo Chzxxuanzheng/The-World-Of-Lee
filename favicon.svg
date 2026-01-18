@@ -1,0 +1,50 @@
+<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+	<defs>
+		<!-- 1. 定义形状 -->
+		<symbol id="star" viewBox="0 0 10 20">
+			<path d="M 0 10 Q 5 10 5 20 Q 5 10 10 10 Q 5 10 5 0 Q 5 10 0 10"/>
+		</symbol>
+
+		<!-- 月亮的形状蒙版 -->
+		<mask id="moon-shape" maskUnits="userSpaceOnUse">
+			<circle cx="100" cy="100" r="100" fill="white"/>
+			<circle cx="140" cy="60" r="80" fill="black"/>
+		</mask>
+
+		<!-- 2. 定义全局渐变 -->
+		<linearGradient id="dark-color" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="200" y2="200">
+			<stop offset="0%" stop-color="hsl(175, 100%, 30%)" />
+			<stop offset="100%" stop-color="hsl(298, 100%, 30%)" />
+		</linearGradient>
+		<linearGradient id="light-color" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="200" y2="200">
+			<stop offset="0%" stop-color="hsl(175, 100%, 70%)" />
+			<stop offset="100%" stop-color="hsl(298, 100%, 70%)" />
+		</linearGradient>
+
+		<!-- 3. 制作蒙版：深色部分 (月亮 + 所有星星) -->
+		<mask id="mask-dark" maskUnits="userSpaceOnUse">
+			<!-- 月亮部分 -->
+			<rect x="0" y="0" width="200" height="200" fill="white" mask="url(#moon-shape)"/>
+			<!-- 星星部分 -->
+			<use href="#star" x="10" y="50" width="50" fill="white"/>
+			<use href="#star" x="90" y="-10" width="120" fill="white"/>
+			<use href="#star" x="40" y="-40" width="60" fill="white"/>
+		</mask>
+
+		<!-- 4. 制作蒙版：浅色部分 (仅星星与月亮重叠的部分) -->
+		<mask id="mask-light" maskUnits="userSpaceOnUse">
+			<g mask="url(#moon-shape)">
+				<use href="#star" x="10" y="50" width="50" fill="white"/>
+				<use href="#star" x="90" y="-10" width="120" fill="white"/>
+				<use href="#star" x="40" y="-40" width="60" fill="white"/>
+			</g>
+		</mask>
+	</defs>
+
+	<!-- 5. 绘制最终图形 -->
+	<!-- 使用深色渐变填充整个画布，但只显示蒙版内的部分 -->
+	<rect x="0" y="0" width="200" height="200" fill="url(#dark-color)" mask="url(#mask-dark)"/>
+	
+	<!-- 使用浅色渐变填充整个画布，覆盖在重叠区域 -->
+	<rect x="0" y="0" width="200" height="200" fill="url(#light-color)" mask="url(#mask-light)"/>
+</svg>
