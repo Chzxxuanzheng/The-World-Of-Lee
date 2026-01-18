@@ -1,1 +1,0 @@
-import{_ as o,c as t,b as n,o as s}from"./app-v_D8OScE.js";const r={},c={class:"markdown-content"};function a(B,e){return s(),t("div",c,[...e[0]||(e[0]=[n("p",null,[n("a",{href:"./%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%86%99%E8%BF%99%E4%B8%AA"},"前言：我为什么要写这东西")],-1)])])}const d=o(r,[["render",a]]);export{d as default};

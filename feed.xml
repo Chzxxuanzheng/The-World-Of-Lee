@@ -8,6 +8,14 @@
     <copyright>Mr.Lee</copyright>
     <atom:link href="https://leenet.xyz/feed.xml" rel="self" type="application/rss+xml"/>
     <item>
+      <title>GitHub Pages+Jsdelivr 让你的静态网站用上CDN</title>
+      <link>https://leenet.xyz/article/gh_jsd%E6%9E%84%E5%BB%BA%E4%BD%A0%E7%9A%84%E5%8D%9A%E5%AE%A2</link>
+      <description>serverless太爽了</description>
+      <pubDate>Mon, 19 Jan 2026 00:00:00 GMT</pubDate>
+      <guid>https://leenet.xyz/article/gh_jsd%E6%9E%84%E5%BB%BA%E4%BD%A0%E7%9A%84%E5%8D%9A%E5%AE%A2</guid>
+      <author>Mr.Lee</author>
+    </item>
+    <item>
       <title>一件离谱的事情</title>
       <link>https://leenet.xyz/article/%E4%B8%80%E4%BB%B6%E7%A6%BB%E8%B0%B1%E7%9A%84%E4%BA%8B%E6%83%85</link>
       <description>万物互联建立在脆弱的支柱上</description>
