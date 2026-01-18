@@ -1,4 +1,3 @@
-/// <reference types="vite/client" />
 import { defineConfig } from 'vite'
 import { pagesInfoPlugin } from './plugin/pagesInfo'
 import md from './plugin/mdBuilder'
@@ -6,11 +5,11 @@ import yaml from '@modyfi/vite-plugin-yaml'
 import vue from '@vitejs/plugin-vue'
 import { rss } from './plugin/rss'
 
+const env = process.env
 
 // https://vite.dev/config/
 export default defineConfig({
 	plugins: [
-		// sass(),
 		yaml(),
 		md(),
 		vue({
@@ -25,5 +24,5 @@ export default defineConfig({
 			'#': '/blog',
 		},
 	},
-	base: import.meta.env.VITE_CDN_BASE || './',
+	base: env.VITE_CDN_BASE || './',
 })
