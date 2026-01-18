@@ -48,6 +48,10 @@ jobs:
             - name: 更新依赖
               run: yarn
 
+            - name: 设置环境变量
+              run: |
+                  echo VITE_CDN_BASE=https://cdn.jsdmirror.com/gh/chzxxuanzheng/The-World-Of-Lee@pages/ >> $GITHUB_ENV
+
             - name: 构建
               run: yarn build
 
@@ -61,4 +65,7 @@ jobs:
 
             - name: 部署到 GitHub Pages
               id: deployment
-              uses: actions/deploy-pages@v4
+              uses: JamesIves/github-pages-deploy-action@v4
+              with:
+                  branch: pages
+                  folder: dist

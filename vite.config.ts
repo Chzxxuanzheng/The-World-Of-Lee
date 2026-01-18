@@ -1,3 +1,4 @@
+/// <reference types="vite/client" />
 import { defineConfig } from 'vite'
 import { pagesInfoPlugin } from './plugin/pagesInfo'
 import md from './plugin/mdBuilder'
@@ -24,4 +25,5 @@ export default defineConfig({
 			'#': '/blog',
 		},
 	},
+	base: import.meta.env.VITE_CDN_BASE || './',
 })
