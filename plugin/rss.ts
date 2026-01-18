@@ -50,6 +50,7 @@ export function rss(): ReturnType<typeof rssPlugin> {
 			description: article.description || '',
 			pubDate: transformDate(article.pubDate),
 			guid: `https://leenet.xyz/article${article.url}`,
+			author: 'Mr.Lee',
 		})),
 	})
 }
