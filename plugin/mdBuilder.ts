@@ -74,6 +74,7 @@ function getName(info: string): string {
 function parserLineNumbers(html: string, info: HighlightInfo): [string, number] {
 	const { document } = parseHTML(html)
 	const pre: HTMLElement = document.children[0] as HTMLElement
+	pre.setAttribute('v-pre', '')
 	const code: HTMLElement = pre.children[0] as HTMLElement
 	const baseLineNumber = info.startLine
 	let lineCount = 0
@@ -250,6 +251,9 @@ async function parseFrontMatter(content: string): Promise<string> {
 	})
 
 	let html = md.render(content)
+
+	// 解决 Vue 模板冲突
+	html = html.replace(/{{/g, '&#123;&#123;').replace(/}}/g, '&#125;&#125;')
 
 	// 处理高亮代码块占位符
 	for (const [id, info] of highlightMap) {
