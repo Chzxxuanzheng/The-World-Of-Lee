@@ -25,27 +25,28 @@ jobs:
             - name: 拉取分支
               uses: actions/checkout@v4
 
-            - name: 缓存依赖
-              uses: actions/cache@v4
+            - name: 安装 pnpm
+              uses: pnpm/action-setup@v2
               with:
-                  # 缓存 yarn/npm/pnpm 以及 node_modules，适配 Yarn v1/v2+ 和 pnpm
-                  path: |
-                      ~/.cache/yarn
-                      .yarn/cache
-                      ~/.npm
-                      node_modules
-                      yarn.lock
-                  key: page
+                  version: 10 # 或者你本地使用的版本
+                  run_install: false
 
-            - name: 更新依赖
-              run: yarn
+            - name: 设置 Nodejs
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 25.x
+                  cache: 'pnpm' # 自动处理 pnpm store 的缓存，无需手动写 cache 步骤
+
+
+            - name: 安装依赖
+              run: pnpm install --frozen-lockfile
 
             - name: 设置环境变量
               run: |
                   echo VITE_CDN_BASE=https://cdn.jsdmirror.com/gh/chzxxuanzheng/The-World-Of-Lee@pages/ >> $GITHUB_ENV
 
             - name: 构建
-              run: yarn build
+              run: pnpm build
 
             - name: 配置 Pages 环境
               uses: actions/configure-pages@v5
