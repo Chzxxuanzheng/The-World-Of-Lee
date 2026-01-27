@@ -35,6 +35,8 @@ const languageAliases: Record<string, string> = {
 	'md': 'Markdown',
 	'html': 'HTML',
 	'css': 'CSS',
+	'yml': 'YAML',
+	'jinja': 'Jinja',
 }
 
 const fullNames = Object.values(languageAliases)
