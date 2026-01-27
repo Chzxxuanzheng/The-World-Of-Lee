@@ -5,15 +5,15 @@
 			:style="{'--color': `var(--bg-color-${name})`}"
 			:class="{selected: name === currentPage}"
 			:title="pageNameSvg[name]!.name">
-			<span @mouseenter="onHover($event, name)"
-				@click="gotoPage(name)">{{ pageNameSvg[name]!.icon }}</span>
+			<a @mouseenter="onHover($event, name)" :href="getGotoPath(name)"
+				@click.prevent="gotoPage(name)">{{ pageNameSvg[name]!.icon }}</a>
 		</div>
 	</nav>
 </template>
 
 <script setup lang="ts">
 import { animate } from 'animejs'
-import { usePageName } from '../../function/state.ts'
+import { usePageName } from '../../function/state'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
@@ -45,13 +45,17 @@ const pageNameSvg: {
 
 const currentPage = usePageName()
 
+function getGotoPath(name: string) {
+	if (name === 'home') return '/'
+	if (name === 'article') return '/article/'
+	if (name === 'edu') return '/edu/'
+	if (name === 'links') return '/links/'
+	if (name === 'about') return '/about/'
+	return '/'
+}
+
 async function gotoPage(name: string) {
-	let path = '/'
-	if (name === 'article') path = '/article/'
-	else if (name === 'edu') path = '/edu/'
-	else if (name === 'links') path = '/links/'
-	else if (name === 'about') path = '/about/'
-	await router.push(path)
+	await router.push(getGotoPath(name))
 }
 
 const locks = new Set<string>()
@@ -106,9 +110,11 @@ function onHover(event: MouseEvent, lock: string) {
 		margin: 0 8px
 		background: color.get-color(var(--color))
 
-	span
+	a
 		display: block
+		color: color.get-color-1-r()
 		cursor: pointer
 		font-size: 18px
 		transition: all 0.3s ease
+		text-decoration: none
 </style>

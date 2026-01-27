@@ -19,7 +19,7 @@
 			<Tabs />
 		</TopTabEl>
 		<TopTabEl class="right-button">
-			<a :href="`${getWindow()?.location.protocol}//${getWindow()?.location.host}/feed.xml`" target="_blank" title="RSS"></a>
+			<a :href="`https://leenet.xyz/feed.xml`" target="_blank" title="RSS"></a>
 		</TopTabEl>
 	</header>
 </template>
@@ -30,7 +30,7 @@ import TopTabEl from '@/components/topBar/TopTabEl.vue'
 import PageName from '@/components/topBar/PageName.vue'
 import Tabs from '@/components/topBar/Tabs.vue'
 import DarkModeSwitch from '@/components/topBar/DarkModeSwitch.vue'
-import { getWindow, runtime } from '@/function/state.ts'
+import { runtime } from '@/function/state'
 </script>
 
 <style lang="sass" scoped>
